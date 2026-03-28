@@ -1,0 +1,19 @@
+import { NgModule } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { createTranslateLoader } from './translate-loader.factory';
+
+@NgModule({
+  imports: [
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
+  ],
+  exports: [TranslateModule],
+})
+export class I18nModule {}

@@ -1,0 +1,30 @@
+import {
+  Component,
+  Input,
+  ViewChild,
+  ViewContainerRef,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import { MfeLoaderService, MfeConfig } from './mfe-loader.service';
+
+@Component({
+  selector: 'app-mfe-wrapper',
+  template: `<ng-container #container></ng-container>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MfeWrapperComponent implements OnInit {
+  @Input() config!: MfeConfig;
+  @Input() componentName!: string;
+
+  @ViewChild('container', { read: ViewContainerRef, static: true })
+  container!: ViewContainerRef;
+
+  constructor(private mfeLoader: MfeLoaderService) {}
+
+  async ngOnInit(): Promise<void> {
+    const module = await this.mfeLoader.loadModule(this.config);
+    const component = module[this.componentName];
+    this.container.createComponent(component);
+  }
+}
