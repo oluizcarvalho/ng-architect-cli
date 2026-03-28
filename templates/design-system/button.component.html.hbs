@@ -1,0 +1,10 @@
+<button
+  [type]="type"
+  [disabled]="disabled || loading"
+  [class]="'ds-btn ds-btn--' + variant + ' ds-btn--' + size"
+  [class.ds-btn--loading]="loading"
+  (click)="onClick($event)"
+>
+  <span *ngIf="loading" class="ds-btn__spinner"></span>
+  <ng-content></ng-content>
+</button>

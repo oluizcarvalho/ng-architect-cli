@@ -1,0 +1,54 @@
+{
+  "name": "ng-architect-cli",
+  "version": "1.0.0",
+  "description": "CLI to generate production-ready Angular projects with Micro Frontends, Design System, CI/CD, SSO, and i18n",
+  "main": "dist/index.js",
+  "bin": {
+    "ng-architect": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest --passWithNoTests",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "angular",
+    "cli",
+    "micro-frontends",
+    "design-system",
+    "cicd",
+    "sso",
+    "i18n",
+    "scaffold",
+    "generator"
+  ],
+  "author": "Luiz Carvalho",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "handlebars": "^4.7.8",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^8.2.10",
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ]
+}
